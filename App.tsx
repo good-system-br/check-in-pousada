@@ -138,7 +138,7 @@ const App: React.FC = () => {
                     <h1 className="font-serif text-2xl text-charcoal-200 leading-tight font-bold tracking-tight">
                       Bem-vindo à Villa Verde
                     </h1>
-                    <p className="text-xs text-sand-500 mt-2 font-light italic">Seu guia digital premium</p>
+                    <p className="text-xs text-sand-500 mt-2 font-light italic">Guia do Hospede</p>
                 </div>
                 
                 {/* Weather Widget */}
