@@ -1,0 +1,7 @@
+{
+  "name": "Guia de Boas-Vindas",
+  "description": "Um guia digital elegante para hóspedes Airbnb e aluguéis de temporada, com recomendações locais via IA.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
