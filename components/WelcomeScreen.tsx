@@ -91,19 +91,19 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
             </p>
         </div>
 
-        {/* Quick Stats */}
-        <div className="mb-8 grid grid-cols-3 gap-4 px-6">
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 text-center">
-            <p className="text-2xl font-bold text-white">{loading ? '--' : weather?.temperature}°</p>
-            <p className="text-[10px] text-sand-300 mt-1">Temperatura</p>
+        {/* Quick Stats - Compact */}
+        <div className="mb-6 flex justify-around gap-2 px-6">
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 text-center">
+            <p className="text-lg font-bold text-white">{loading ? '--' : weather?.temperature}°</p>
+            <p className="text-[8px] text-sand-300">Temp</p>
           </div>
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 text-center">
-            <p className="text-2xl font-bold text-white">1800m</p>
-            <p className="text-[10px] text-sand-300 mt-1">Altitude</p>
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 text-center">
+            <p className="text-lg font-bold text-white">1800m</p>
+            <p className="text-[8px] text-sand-300">Alt</p>
           </div>
-          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 text-center">
-            <p className="text-2xl font-bold text-white">24h</p>
-            <p className="text-[10px] text-sand-300 mt-1">Suporte</p>
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 text-center">
+            <p className="text-lg font-bold text-white">24h</p>
+            <p className="text-[8px] text-sand-300">Sup</p>
           </div>
         </div>
 
