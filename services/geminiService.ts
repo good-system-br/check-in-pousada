@@ -1,7 +1,9 @@
 import { GoogleGenAI, Type, Schema } from "@google/genai";
 import { Restaurant } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize with API key from environment - will fail gracefully if not set
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 const restaurantSchema: Schema = {
   type: Type.ARRAY,
@@ -19,6 +21,30 @@ const restaurantSchema: Schema = {
 
 export const getLocalRecommendations = async (location: string): Promise<Restaurant[]> => {
   try {
+    if (!ai) {
+      // Fallback data when API key is not available
+      return [
+        {
+          name: "Mont Vert - A Casa do Fondue",
+          description: "Referência em fondues premium e rodízios. Ambiente sofisticado com música ao vivo e adega climatizada.",
+          cuisine: "Fondue & Suíça",
+          priceRange: "$$$$"
+        },
+        {
+          name: "Villa Donna Bistrô",
+          description: "Culinária italiana artesanal com toque contemporâneo. Famoso pelos risotos e massas frescas em um chalé aconchegante.",
+          cuisine: "Italiana / Bistrô",
+          priceRange: "$$$"
+        },
+        {
+          name: "Paulo das Trutas",
+          description: "O mais tradicional restaurante de trutas da região. Pratos frescos direto do trutário local. Simples e imperdível.",
+          cuisine: "Trutas & Grelhados",
+          priceRange: "$$"
+        }
+      ];
+    }
+
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: `Recommend 3 charming restaurants in ${location} suitable for couples or families staying at a cozy alpine inn. Focus on Fondue, Trout (Truta), or Italian cuisine typical of the region.`,
@@ -35,12 +61,36 @@ export const getLocalRecommendations = async (location: string): Promise<Restaur
     return JSON.parse(text) as Restaurant[];
   } catch (error) {
     console.error("Error fetching recommendations:", error);
-    return [];
+    // Return fallback data on error
+    return [
+      {
+        name: "Mont Vert - A Casa do Fondue",
+        description: "Referência em fondues premium e rodízios. Ambiente sofisticado com música ao vivo e adega climatizada.",
+        cuisine: "Fondue & Suíça",
+        priceRange: "$$$$"
+      },
+      {
+        name: "Villa Donna Bistrô",
+        description: "Culinária italiana artesanal com toque contemporâneo. Famoso pelos risotos e massas frescas em um chalé aconchegante.",
+        cuisine: "Italiana / Bistrô",
+        priceRange: "$$$"
+      },
+      {
+        name: "Paulo das Trutas",
+        description: "O mais tradicional restaurante de trutas da região. Pratos frescos direto do trutário local. Simples e imperdível.",
+        cuisine: "Trutas & Grelhados",
+        priceRange: "$$"
+      }
+    ];
   }
 };
 
 export const chatWithConcierge = async (message: string, history: string[]): Promise<string> => {
     try {
+        if (!ai) {
+          return "Estou reconectando com a recepção...";
+        }
+
         const model = "gemini-2.5-flash";
         const systemInstruction = `
         Você é a recepcionista virtual da 'Pousada Villa Verde' em Monte Verde, MG (a Suíça Mineira).
