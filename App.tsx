@@ -135,7 +135,7 @@ const App: React.FC = () => {
                     <p className="text-[10px] uppercase tracking-[0.3em] text-sand-600 mb-2 font-bold flex items-center gap-1">
                       📍 Monte Verde • MG • Quarto 107
                     </p>
-                    <h1 className="font-serif text-4xl text-charcoal-900 leading-tight font-bold tracking-tight">
+                    <h1 className="font-serif text-2xl text-charcoal-200 leading-tight font-bold tracking-tight">
                       Bem-vindo à Villa Verde
                     </h1>
                     <p className="text-xs text-sand-500 mt-2 font-light italic">Seu guia digital premium</p>
