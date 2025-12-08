@@ -5,8 +5,9 @@ import { RestaurantsScreen } from './components/RestaurantsScreen';
 import { DirectionsScreen } from './components/DirectionsScreen';
 import { ChatScreen } from './components/ChatScreen';
 import { InfoScreen } from './components/InfoScreen';
+import { GuestScreen } from './components/GuestScreen';
 import { ScreenName } from './types';
-import { Wifi, Copy, Info, LogOut, Cloud, Droplets, Wind } from 'lucide-react';
+import { Wifi, Copy, Info, LogOut, Cloud, Droplets, Wind, User } from 'lucide-react';
 import { getWeatherForMonteVerde, WeatherData } from './services/weatherService';
 
 // Custom WhatsApp Icon Component
@@ -77,6 +78,8 @@ const App: React.FC = () => {
         return <InfoScreen onBack={() => setCurrentScreen('MENU')} type="SPA" />;
       case 'TOWELS':
         return <InfoScreen onBack={() => setCurrentScreen('MENU')} type="TOWELS" />;
+      case 'GUEST':
+        return <GuestScreen onBack={() => setCurrentScreen('MENU')} />;
       case 'WIFI':
          return (
              <div className="h-full flex flex-col items-center justify-center bg-sand-900 text-white p-8 relative">

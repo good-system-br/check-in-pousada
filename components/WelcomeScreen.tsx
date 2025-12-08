@@ -75,49 +75,49 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
       <div className="relative z-20 flex-1 flex flex-col justify-end pb-12 px-8">
         
         {/* Main Headings */}
-        <div className="mb-4 space-y-2 animate-slide-up">
-            <div className="inline-flex items-center gap-1.5 text-sand-300 mb-1">
-                <MapPin size={12} />
-                <span className="text-[9px] uppercase tracking-[0.2em] font-medium">Monte Verde • MG • Quarto 107</span>
+        <div className="mb-8 space-y-4 animate-slide-up">
+            <div className="inline-flex items-center gap-2 text-sand-300 mb-2">
+                <MapPin size={14} />
+                <span className="text-[10px] uppercase tracking-[0.2em] font-medium">Monte Verde • MG</span>
             </div>
             
-            <h1 className="font-serif text-3xl text-white leading-[0.95] drop-shadow-xl">
-               <span className="block text-xl font-light italic opacity-90">Bem-vindo à</span>
-               <span className="font-semibold">Villa Verde</span>
+            <h1 className="font-serif text-5xl text-white leading-[0.9] drop-shadow-xl">
+               <span className="block text-3xl font-light italic opacity-90 mb-1">Bem-vindo à</span>
+               <span className="font-semibold tracking-wide">Villa Verde</span>
             </h1>
             
-            <p className="text-white/70 text-[11px] font-light leading-snug max-w-[250px]">
-               Seu guia digital premium
+            <p className="text-white/80 text-sm font-light leading-relaxed max-w-[280px] border-l-2 border-sand-500 pl-4">
+               O charme dos Alpes com a hospitalidade de Minas Gerais
             </p>
         </div>
 
         {/* Quick Stats - Ultra Compact */}
-        <div className="mb-3 flex justify-around gap-1.5 px-4">
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded px-2 py-1 text-center">
+        <div className="mb-3 flex gap-2 px-2">
+          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-1.5 text-center">
             <p className="text-sm font-bold text-white">{loading ? '--' : weather?.temperature}°</p>
-            <p className="text-[7px] text-sand-300">Temp</p>
+            <p className="text-[6px] text-sand-300 mt-0.5">Temp</p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded px-2 py-1 text-center">
+          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-1.5 text-center">
             <p className="text-sm font-bold text-white">1800m</p>
-            <p className="text-[7px] text-sand-300">Alt</p>
+            <p className="text-[6px] text-sand-300 mt-0.5">Alt</p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded px-2 py-1 text-center">
+          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-1.5 text-center">
             <p className="text-sm font-bold text-white">24h</p>
-            <p className="text-[7px] text-sand-300">Sup</p>
+            <p className="text-[6px] text-sand-300 mt-0.5">Sup</p>
           </div>
         </div>
 
         {/* Action Area */}
-        <div className="space-y-3">
+        <div className="space-y-1.5">
             <button 
                 onClick={onStart}
-                className="group w-full bg-gradient-to-r from-sand-400 to-sand-500 p-0.5 rounded-full flex items-center justify-between hover:from-sand-500 hover:to-sand-600 transition-all duration-300 active:scale-95 shadow-lg shadow-sand-500/30"
+                className="group w-full bg-gradient-to-r from-sand-400 to-sand-500 p-1 rounded-full flex items-center justify-between hover:from-sand-500 hover:to-sand-600 transition-all duration-300 active:scale-95 shadow-lg shadow-sand-500/40"
             >
-                <span className="pl-4 text-[10px] text-white uppercase tracking-[0.15em] font-bold group-hover:pl-6 transition-all">
+                <span className="pl-4 text-[11px] text-white uppercase tracking-[0.15em] font-bold">
                     Acessar Guia
                 </span>
-                <div className="h-9 w-9 bg-white rounded-full flex items-center justify-center text-sand-600 shadow-lg group-hover:rotate-90 transition-transform duration-500">
-                    <ChevronRight size={16} strokeWidth={3} />
+                <div className="h-10 w-10 bg-white rounded-full flex items-center justify-center text-sand-600 shadow-lg group-hover:rotate-90 transition-transform duration-500">
+                    <ChevronRight size={18} strokeWidth={3} />
                 </div>
             </button>
 

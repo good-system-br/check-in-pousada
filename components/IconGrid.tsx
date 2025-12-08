@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   Wifi, MapPin, Coffee, Key, BookOpen, 
   ShoppingBag, Compass, Info, Utensils, 
-  Trees, MessageSquareText, LifeBuoy 
+  Trees, MessageSquareText, LifeBuoy, User
 } from 'lucide-react';
 import { MenuItem, ScreenName } from '../types';
 
@@ -11,6 +11,7 @@ interface IconGridProps {
 }
 
 const menuItems: MenuItem[] = [
+  { id: '0', label: 'Perfil', iconName: 'User', targetScreen: 'GUEST' },
   { id: '1', label: 'Wi-Fi', iconName: 'Wifi', targetScreen: 'WIFI' },
   { id: '2', label: 'Como Chegar', iconName: 'MapPin', targetScreen: 'DIRECTIONS' },
   { id: '3', label: 'Café da Manhã', iconName: 'Coffee', targetScreen: 'BREAKFAST' }, 
@@ -26,7 +27,7 @@ const menuItems: MenuItem[] = [
 ];
 
 const IconMap: Record<string, React.ElementType> = {
-  Wifi, MapPin, Key, BookOpen, ShoppingBag, Compass, Info, Utensils, Trees, LifeBuoy, MessageSquareText, Coffee
+  Wifi, MapPin, Key, BookOpen, ShoppingBag, Compass, Info, Utensils, Trees, LifeBuoy, MessageSquareText, Coffee, User
 };
 
 export const IconGrid: React.FC<IconGridProps> = ({ onNavigate }) => {

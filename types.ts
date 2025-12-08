@@ -1,4 +1,4 @@
-export type ScreenName = 'WELCOME' | 'MENU' | 'RESTAURANTS' | 'DIRECTIONS' | 'WIFI' | 'CHAT' | 'BREAKFAST' | 'MENU_FOOD' | 'MINIBAR' | 'TOURS' | 'GUIDE' | 'RULES' | 'SPA' | 'TOWELS';
+export type ScreenName = 'WELCOME' | 'MENU' | 'RESTAURANTS' | 'DIRECTIONS' | 'WIFI' | 'CHAT' | 'BREAKFAST' | 'MENU_FOOD' | 'MINIBAR' | 'TOURS' | 'GUIDE' | 'RULES' | 'SPA' | 'TOWELS' | 'GUEST';
 
 export interface Restaurant {
   name: string;
