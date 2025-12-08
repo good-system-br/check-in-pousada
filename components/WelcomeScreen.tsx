@@ -58,14 +58,14 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
       </div>
 
       {/* Top Status Area Mockup */}
-      <div className="absolute top-14 right-8 z-20 flex gap-4 text-white/80 animate-fade-in">
-         <div className="flex items-center gap-1.5 bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
-             <Snowflake size={14} />
-             <span className="text-xs font-medium">{loading ? '--' : weather?.temperature}°C</span>
+      <div className="absolute top-3 right-4 z-20 flex gap-2 text-white/80 animate-fade-in">
+         <div className="flex items-center gap-1 bg-black/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+             <Snowflake size={12} />
+             <span className="text-[10px] font-medium">{loading ? '--' : weather?.temperature}°</span>
          </div>
          {!loading && weather && (
-           <div className="flex items-center gap-1.5 bg-black/20 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-[11px] font-medium max-w-[120px]">
-             <Cloud size={14} />
+           <div className="flex items-center gap-1 bg-black/20 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-[9px] font-medium max-w-[100px]">
+             <Cloud size={12} />
              <span className="truncate">{weather.condition}</span>
            </div>
          )}
@@ -75,49 +75,49 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
       <div className="relative z-20 flex-1 flex flex-col justify-end pb-12 px-8">
         
         {/* Main Headings */}
-        <div className="mb-10 space-y-4 animate-slide-up">
-            <div className="inline-flex items-center gap-2 text-sand-300 mb-2">
-                <MapPin size={14} />
-                <span className="text-[11px] uppercase tracking-[0.25em] font-medium">Monte Verde • MG</span>
+        <div className="mb-4 space-y-2 animate-slide-up">
+            <div className="inline-flex items-center gap-1.5 text-sand-300 mb-1">
+                <MapPin size={12} />
+                <span className="text-[9px] uppercase tracking-[0.2em] font-medium">Monte Verde • MG • Quarto 107</span>
             </div>
             
-            <h1 className="font-serif text-5xl text-white leading-[0.9] drop-shadow-xl">
-               <span className="block text-3xl font-light italic opacity-90 mb-1">Pousada</span>
-               <span className="font-semibold tracking-wide">Villa Verde</span>
+            <h1 className="font-serif text-3xl text-white leading-[0.95] drop-shadow-xl">
+               <span className="block text-xl font-light italic opacity-90">Bem-vindo à</span>
+               <span className="font-semibold">Villa Verde</span>
             </h1>
             
-            <p className="text-white/80 text-sm font-light leading-relaxed max-w-[280px] border-l-2 border-sand-500 pl-4 mt-4">
-               O charme dos Alpes com a hospitalidade de Minas. Sinta-se em casa nas alturas.
+            <p className="text-white/70 text-[11px] font-light leading-snug max-w-[250px]">
+               Seu guia digital premium
             </p>
         </div>
 
-        {/* Quick Stats - Compact */}
-        <div className="mb-6 flex justify-around gap-2 px-6">
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 text-center">
-            <p className="text-lg font-bold text-white">{loading ? '--' : weather?.temperature}°</p>
-            <p className="text-[8px] text-sand-300">Temp</p>
+        {/* Quick Stats - Ultra Compact */}
+        <div className="mb-3 flex justify-around gap-1.5 px-4">
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded px-2 py-1 text-center">
+            <p className="text-sm font-bold text-white">{loading ? '--' : weather?.temperature}°</p>
+            <p className="text-[7px] text-sand-300">Temp</p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 text-center">
-            <p className="text-lg font-bold text-white">1800m</p>
-            <p className="text-[8px] text-sand-300">Alt</p>
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded px-2 py-1 text-center">
+            <p className="text-sm font-bold text-white">1800m</p>
+            <p className="text-[7px] text-sand-300">Alt</p>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 text-center">
-            <p className="text-lg font-bold text-white">24h</p>
-            <p className="text-[8px] text-sand-300">Sup</p>
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded px-2 py-1 text-center">
+            <p className="text-sm font-bold text-white">24h</p>
+            <p className="text-[7px] text-sand-300">Sup</p>
           </div>
         </div>
 
         {/* Action Area */}
-        <div className="space-y-6">
+        <div className="space-y-3">
             <button 
                 onClick={onStart}
-                className="group w-full bg-gradient-to-r from-sand-400 to-sand-500 p-1 rounded-[2rem] flex items-center justify-between hover:from-sand-500 hover:to-sand-600 transition-all duration-300 active:scale-95 shadow-xl shadow-sand-500/30"
+                className="group w-full bg-gradient-to-r from-sand-400 to-sand-500 p-0.5 rounded-full flex items-center justify-between hover:from-sand-500 hover:to-sand-600 transition-all duration-300 active:scale-95 shadow-lg shadow-sand-500/30"
             >
-                <span className="pl-6 text-xs text-white uppercase tracking-[0.2em] font-bold group-hover:pl-8 transition-all">
-                    Acessar Guia Digital
+                <span className="pl-4 text-[10px] text-white uppercase tracking-[0.15em] font-bold group-hover:pl-6 transition-all">
+                    Acessar Guia
                 </span>
-                <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center text-sand-600 shadow-lg group-hover:rotate-90 transition-transform duration-500">
-                    <ChevronRight size={20} strokeWidth={3} />
+                <div className="h-9 w-9 bg-white rounded-full flex items-center justify-center text-sand-600 shadow-lg group-hover:rotate-90 transition-transform duration-500">
+                    <ChevronRight size={16} strokeWidth={3} />
                 </div>
             </button>
 
