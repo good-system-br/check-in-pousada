@@ -91,17 +91,33 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
             </p>
         </div>
 
+        {/* Quick Stats */}
+        <div className="mb-8 grid grid-cols-3 gap-4 px-6">
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 text-center">
+            <p className="text-2xl font-bold text-white">{loading ? '--' : weather?.temperature}°</p>
+            <p className="text-[10px] text-sand-300 mt-1">Temperatura</p>
+          </div>
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 text-center">
+            <p className="text-2xl font-bold text-white">1800m</p>
+            <p className="text-[10px] text-sand-300 mt-1">Altitude</p>
+          </div>
+          <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-3 text-center">
+            <p className="text-2xl font-bold text-white">24h</p>
+            <p className="text-[10px] text-sand-300 mt-1">Suporte</p>
+          </div>
+        </div>
+
         {/* Action Area */}
         <div className="space-y-6">
             <button 
                 onClick={onStart}
-                className="group w-full bg-white/10 backdrop-blur-md border border-white/20 p-1 rounded-[2rem] flex items-center justify-between hover:bg-white/20 transition-all duration-300 active:scale-[0.98]"
+                className="group w-full bg-gradient-to-r from-sand-400 to-sand-500 p-1 rounded-[2rem] flex items-center justify-between hover:from-sand-500 hover:to-sand-600 transition-all duration-300 active:scale-95 shadow-xl shadow-sand-500/30"
             >
-                <span className="pl-6 text-xs text-white uppercase tracking-[0.2em] font-medium group-hover:pl-8 transition-all">
-                    Acessar Guia
+                <span className="pl-6 text-xs text-white uppercase tracking-[0.2em] font-bold group-hover:pl-8 transition-all">
+                    Acessar Guia Digital
                 </span>
-                <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center text-charcoal-900 shadow-lg group-hover:rotate-90 transition-transform duration-500">
-                    <ChevronRight size={20} />
+                <div className="h-12 w-12 bg-white rounded-full flex items-center justify-center text-sand-600 shadow-lg group-hover:rotate-90 transition-transform duration-500">
+                    <ChevronRight size={20} strokeWidth={3} />
                 </div>
             </button>
 

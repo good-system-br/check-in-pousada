@@ -38,7 +38,7 @@ export const IconGrid: React.FC<IconGridProps> = ({ onNavigate }) => {
           <button
             key={item.id}
             onClick={() => onNavigate(item.targetScreen)}
-            className="group flex flex-col items-center justify-center aspect-square bg-gradient-to-br from-white to-sand-50 rounded-2xl shadow-sm border border-sand-100 hover:border-sand-300 hover:shadow-md transition-all duration-300 active:scale-[0.95]"
+            className="group flex flex-col items-center justify-center aspect-square bg-gradient-to-br from-white via-sand-25 to-sand-50 rounded-2xl shadow-md border border-sand-100 hover:border-sand-400 hover:shadow-xl hover:scale-105 transition-all duration-300 active:scale-95"
           >
             <div className="text-sand-600 mb-2.5 p-3 rounded-xl bg-gradient-to-br from-sand-100 to-sand-50 group-hover:from-sand-200 group-hover:to-sand-100 group-hover:text-sand-800 transition-all duration-300 shadow-sm">
                 <IconComponent size={22} strokeWidth={1.5} />

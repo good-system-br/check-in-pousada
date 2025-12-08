@@ -49,11 +49,11 @@ export const RestaurantsScreen: React.FC<RestaurantsScreenProps> = ({ onBack }) 
   return (
     <div className="h-full flex flex-col bg-sand-50">
       {/* Header */}
-      <div className="px-6 pt-14 pb-4 flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-20 border-b border-sand-100">
+      <div className="px-6 pt-14 pb-6 flex items-center justify-between bg-gradient-to-b from-white to-sand-25 sticky top-0 z-20 border-b-2 border-sand-200 shadow-sm">
         <button onClick={onBack} className="p-2 -ml-2 rounded-full hover:bg-sand-100 transition-colors text-charcoal-900">
           <ArrowLeft size={22} strokeWidth={1.5} />
         </button>
-        <h2 className="font-serif text-lg font-bold text-charcoal-900 tracking-wide">Gastronomia em Monte Verde</h2>
+        <h2 className="font-serif text-xl font-bold text-charcoal-900 tracking-tight">Gastronomia Premiada</h2>
         <div className="w-8" /> 
       </div>
 

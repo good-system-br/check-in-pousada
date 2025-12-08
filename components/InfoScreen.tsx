@@ -105,25 +105,31 @@ export const InfoScreen: React.FC<InfoScreenProps> = ({ onBack, type }) => {
       </div>
 
       <div className="flex-1 overflow-y-auto no-scrollbar">
-        {/* Icon Header */}
-        <div className="pt-8 pb-6 px-8 text-center border-b border-sand-100">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-sand-100 rounded-2xl mb-4">
+        {/* Icon Header with Badge */}
+        <div className="pt-8 pb-6 px-8 text-center border-b border-sand-100 bg-gradient-to-b from-sand-50 to-white">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sand-100 to-sand-200 rounded-2xl mb-4 shadow-md">
             <IconComponent size={28} className="text-sand-800" />
           </div>
+          <h2 className="text-2xl font-bold text-charcoal-900 mb-2">{info.title}</h2>
           <p className="text-sand-600 text-sm leading-relaxed font-light max-w-xs mx-auto">
             {info.description}
           </p>
+          {/* Service Badge */}
+          <div className="flex justify-center gap-2 mt-4">
+            <span className="bg-sand-100 text-sand-800 text-[10px] font-bold uppercase px-3 py-1 rounded-full tracking-wider">Premium</span>
+            <span className="bg-green-100 text-green-800 text-[10px] font-bold uppercase px-3 py-1 rounded-full tracking-wider">24/7</span>
+          </div>
         </div>
 
         {/* Info Cards */}
         <div className="px-8 py-8 space-y-3">
           {info.content.map((item, idx) => (
-            <div key={idx} className="bg-white rounded-2xl p-4 border border-sand-100 hover:border-sand-300 transition-colors shadow-sm">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] uppercase tracking-[0.2em] text-sand-500 font-bold">{item.label}</span>
-                <div className="w-1 h-1 bg-sand-300 rounded-full"></div>
+            <div key={idx} className="bg-gradient-to-r from-white to-sand-50 rounded-2xl p-5 border border-sand-100 hover:border-sand-300 transition-all duration-300 shadow-sm hover:shadow-md group">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[11px] uppercase tracking-[0.15em] text-sand-600 font-bold">{item.label}</span>
+                <div className="w-1.5 h-1.5 bg-sand-400 rounded-full group-hover:bg-sand-600 transition-colors"></div>
               </div>
-              <p className="text-charcoal-900 font-medium text-sm mt-1.5">{item.value}</p>
+              <p className="text-charcoal-900 font-semibold text-base">{item.value}</p>
             </div>
           ))}
         </div>
@@ -132,9 +138,9 @@ export const InfoScreen: React.FC<InfoScreenProps> = ({ onBack, type }) => {
         <div className="px-8 pb-12 pt-4">
           <button 
             onClick={onBack}
-            className="w-full py-3.5 bg-sand-800 text-white text-[11px] font-bold uppercase tracking-[0.15em] rounded-xl hover:bg-sand-700 transition-colors shadow-lg shadow-sand-900/10 active:scale-[0.98]"
+            className="w-full py-3.5 bg-gradient-to-r from-sand-800 to-sand-900 text-white text-[11px] font-bold uppercase tracking-[0.15em] rounded-xl hover:from-sand-700 hover:to-sand-800 transition-all duration-300 shadow-lg shadow-sand-900/10 active:scale-95 hover:shadow-xl"
           >
-            Voltar
+            Voltar ao Menu
           </button>
         </div>
       </div>

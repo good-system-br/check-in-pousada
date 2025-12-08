@@ -127,12 +127,15 @@ const App: React.FC = () => {
         return (
           <div className="h-full flex flex-col bg-sand-50 relative overflow-hidden">
              {/* Header */}
-             <div className="pt-16 pb-6 px-8 bg-sand-50 z-10 flex justify-between items-start border-b border-sand-100/50">
+             <div className="pt-16 pb-6 px-8 bg-gradient-to-b from-sand-50 to-sand-25 z-10 flex justify-between items-start border-b-2 border-sand-200">
                 <div className="flex-1">
-                    <p className="text-[10px] uppercase tracking-[0.25em] text-sand-500 mb-3 font-medium">Monte Verde • MG</p>
-                    <h1 className="font-serif text-3xl text-charcoal-900 leading-tight">
-                      Olá, Hóspede.
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-sand-600 mb-2 font-bold flex items-center gap-1">
+                      📍 Monte Verde • MG • Quarto 107
+                    </p>
+                    <h1 className="font-serif text-4xl text-charcoal-900 leading-tight font-bold tracking-tight">
+                      Bem-vindo à Villa Verde
                     </h1>
+                    <p className="text-xs text-sand-500 mt-2 font-light italic">Seu guia digital premium</p>
                 </div>
                 
                 {/* Weather Widget */}
@@ -175,30 +178,46 @@ const App: React.FC = () => {
                 <IconGrid onNavigate={setCurrentScreen} />
                 
                 <div className="mt-6 mb-24 px-8">
-                    <div className="bg-gradient-to-br from-sand-800 via-sand-750 to-sand-900 rounded-[2.5rem] p-8 text-center shadow-lg relative overflow-hidden group border border-sand-700/50">
+                    <div className="bg-gradient-to-br from-sand-800 via-sand-750 to-sand-900 rounded-[2.5rem] p-8 text-center shadow-lg relative overflow-hidden group border border-sand-700">
                         <div className="absolute top-0 right-0 w-48 h-48 bg-sand-600 rounded-full blur-[100px] opacity-15 pointer-events-none group-hover:opacity-25 transition-opacity duration-500"></div>
                         <div className="absolute bottom-0 left-0 w-40 h-40 bg-sand-500 rounded-full blur-[80px] opacity-10 pointer-events-none"></div>
                         
-                        <p className="font-serif italic text-sand-50 text-lg mb-4 relative z-10 leading-relaxed tracking-wide">
-                          "Monte Verde • A Suíça Mineira"
-                        </p>
-                        <div className="w-16 h-px bg-gradient-to-r from-transparent via-sand-500/50 to-transparent mx-auto my-4"></div>
-                        <p className="text-sand-300 text-xs font-light relative z-10 leading-relaxed">
-                          Bem-vindo à Pousada Villa Verde. Experimente luxo e conforto em altitudes verdejantes.
-                        </p>
+                        <div className="relative z-10">
+                          <p className="text-sand-300 text-sm mb-3">⭐⭐⭐⭐⭐ 4.9 de 5 estrelas</p>
+                          <p className="font-serif italic text-sand-50 text-lg mb-4 leading-relaxed tracking-wide">
+                            "A Suíça Mineira em sua essência. Experiência inesquecível."
+                          </p>
+                          <div className="w-16 h-px bg-gradient-to-r from-transparent via-sand-500/50 to-transparent mx-auto my-4"></div>
+                          <p className="text-sand-400 text-xs font-light">
+                            Pousada Villa Verde • Monte Verde, MG
+                          </p>
+                        </div>
                     </div>
                 </div>
              </div>
 
-             {/* WhatsApp Floating Button */}
-             <a 
-               href="https://wa.me/5548999999999" 
-               target="_blank"
-               rel="noopener noreferrer"
-               className="absolute bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-xl shadow-green-900/20 hover:scale-105 transition-all duration-300 active:scale-95 group border-2 border-white"
-             >
-               <WhatsAppIcon className="text-white w-8 h-8" />
-             </a>
+             {/* Emergency & WhatsApp Buttons */}
+             <div className="absolute bottom-6 right-6 z-50 flex flex-col gap-3">
+               {/* Emergency Button */}
+               <button 
+                 onClick={() => alert('Chamando recepção de emergência...')}
+                 className="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg shadow-red-600/40 hover:scale-110 transition-all duration-300 active:scale-95 border-2 border-white hover:bg-red-700 animate-pulse"
+                 title="Emergência"
+               >
+                 <span className="text-white text-lg font-bold">!</span>
+               </button>
+               
+               {/* WhatsApp Button */}
+               <a 
+                 href="https://wa.me/5548999999999" 
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-xl shadow-green-900/20 hover:scale-105 transition-all duration-300 active:scale-95 group border-2 border-white hover:bg-[#20BA58]"
+                 title="WhatsApp"
+               >
+                 <WhatsAppIcon className="text-white w-8 h-8" />
+               </a>
+             </div>
           </div>
         );
     }
