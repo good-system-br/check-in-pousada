@@ -92,18 +92,30 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
         </div>
 
         {/* Quick Stats - Ultra Compact */}
-        <div className="mb-3 flex gap-2 px-2">
-          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-1.5 text-center">
-            <p className="text-sm font-bold text-white">{loading ? '--' : weather?.temperature}°</p>
-            <p className="text-[6px] text-sand-300 mt-0.5">Temp</p>
+        <div className="mb-4 flex gap-2 px-2">
+          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-2 text-center">
+            <p className="text-base font-bold text-white">{loading ? '--' : weather?.temperature}°</p>
+            <p className="text-[7px] text-sand-300 mt-0.5">Temp</p>
           </div>
-          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-1.5 text-center">
-            <p className="text-sm font-bold text-white">1800m</p>
-            <p className="text-[6px] text-sand-300 mt-0.5">Alt</p>
+          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-2 text-center">
+            <p className="text-base font-bold text-white">1800m</p>
+            <p className="text-[7px] text-sand-300 mt-0.5">Alt</p>
           </div>
-          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-1.5 text-center">
-            <p className="text-sm font-bold text-white">24h</p>
-            <p className="text-[6px] text-sand-300 mt-0.5">Sup</p>
+          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-2 text-center">
+            <p className="text-base font-bold text-white">24h</p>
+            <p className="text-[7px] text-sand-300 mt-0.5">Sup</p>
+          </div>
+        </div>
+
+        {/* Info Cards - Novos */}
+        <div className="mb-4 grid grid-cols-2 gap-2 px-2">
+          <div className="bg-gradient-to-br from-white/15 to-white/5 border border-white/25 backdrop-blur-md rounded-lg p-3">
+            <p className="text-[9px] text-sand-300 uppercase font-semibold mb-1.5">Experiência Premium</p>
+            <p className="text-white text-xs leading-snug">Café especial, spa e lazer 24h</p>
+          </div>
+          <div className="bg-gradient-to-br from-white/15 to-white/5 border border-white/25 backdrop-blur-md rounded-lg p-3">
+            <p className="text-[9px] text-sand-300 uppercase font-semibold mb-1.5">Localização</p>
+            <p className="text-white text-xs leading-snug">1.300m de altitude, floresta</p>
           </div>
         </div>
 
