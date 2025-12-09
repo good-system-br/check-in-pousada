@@ -199,18 +199,8 @@ const App: React.FC = () => {
                 </div>
              </div>
 
-             {/* Emergency & WhatsApp Buttons */}
-             <div className="absolute bottom-6 right-6 z-50 flex flex-col gap-3">
-               {/* Emergency Button */}
-               <button 
-                 onClick={() => alert('Chamando recepção de emergência...')}
-                 className="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg shadow-red-600/40 hover:scale-110 transition-all duration-300 active:scale-95 border-2 border-white hover:bg-red-700 animate-pulse"
-                 title="Emergência"
-               >
-                 <span className="text-white text-lg font-bold">!</span>
-               </button>
-               
-               {/* WhatsApp Button */}
+             {/* WhatsApp Button */}
+             <div className="absolute bottom-6 right-6 z-50">
                <a 
                  href="https://wa.me/5548999999999" 
                  target="_blank"
