@@ -61,8 +61,8 @@ const InfoData = {
     title: 'Nossas Regras',
     icon: Info,
     content: [
-      { label: 'Ruído', value: 'Respeito após 22:00' },
-      { label: 'Fumac', value: 'Proibido em áreas comuns' },
+      { label: 'Barulhos', value: 'Respeito após 22:00' },
+      { label: 'Fumar', value: 'Proibido em áreas comuns' },
       { label: 'Animais', value: 'Sob consulta prévia' },
     ],
     description: 'Solicitamos respeito com nossa equipe, hóspedes e comunidade local para manter o ambiente tranquilo e acolhedor.'
