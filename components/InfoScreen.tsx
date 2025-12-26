@@ -96,49 +96,50 @@ export const InfoScreen: React.FC<InfoScreenProps> = ({ onBack, type }) => {
   return (
     <div className="h-full flex flex-col bg-sand-50">
       {/* Header */}
-      <div className="px-6 pt-14 pb-4 flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-20 border-b border-sand-100">
-        <button onClick={onBack} className="p-2 -ml-2 rounded-full hover:bg-sand-100 transition-colors text-charcoal-900">
-          <ArrowLeft size={22} strokeWidth={1.5} />
+      <div className="px-4 sm:px-6 pt-12 sm:pt-14 pb-3 sm:pb-4 flex items-center justify-between bg-white/80 backdrop-blur-md sticky top-0 z-20 border-b border-sand-100">
+        <button onClick={onBack} className="p-2 -ml-2 rounded-full hover:bg-sand-100 transition-colors text-charcoal-900 min-h-[44px] min-w-[44px] flex items-center justify-center" aria-label="Voltar">
+          <ArrowLeft size={20} strokeWidth={1.5} className="sm:w-[22px] sm:h-[22px]" />
         </button>
-        <h2 className="font-serif text-lg font-bold text-charcoal-900 tracking-wide">{info.title}</h2>
-        <div className="w-8" />
+        <h2 className="font-serif text-base sm:text-lg font-bold text-charcoal-900 tracking-wide">{info.title}</h2>
+        <div className="w-10 sm:w-11" />
       </div>
 
       <div className="flex-1 overflow-y-auto no-scrollbar">
         {/* Icon Header with Badge */}
-        <div className="pt-8 pb-6 px-8 text-center border-b border-sand-100 bg-gradient-to-b from-sand-50 to-white">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-sand-100 to-sand-200 rounded-2xl mb-4 shadow-md">
-            <IconComponent size={28} className="text-sand-800" />
+        <div className="pt-6 sm:pt-8 pb-5 sm:pb-6 px-4 sm:px-6 md:px-8 text-center border-b border-sand-100 bg-gradient-to-b from-sand-50 to-white">
+          <div className="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-br from-sand-100 to-sand-200 rounded-xl sm:rounded-2xl mb-3 sm:mb-4 shadow-md">
+            <IconComponent size={26} className="text-sand-800 sm:w-7 sm:h-7" />
           </div>
-          <h2 className="text-2xl font-bold text-charcoal-900 mb-2">{info.title}</h2>
-          <p className="text-sand-600 text-sm leading-relaxed font-light max-w-xs mx-auto">
+          <h2 className="text-xl sm:text-2xl font-bold text-charcoal-900 mb-2">{info.title}</h2>
+          <p className="text-sand-600 text-sm leading-relaxed font-light max-w-xs mx-auto px-2">
             {info.description}
           </p>
           {/* Service Badge */}
-          <div className="flex justify-center gap-2 mt-4">
-            <span className="bg-sand-100 text-sand-800 text-[10px] font-bold uppercase px-3 py-1 rounded-full tracking-wider">Premium</span>
-            <span className="bg-green-100 text-green-800 text-[10px] font-bold uppercase px-3 py-1 rounded-full tracking-wider">24/7</span>
+          <div className="flex justify-center gap-2 mt-3 sm:mt-4">
+            <span className="bg-sand-100 text-sand-800 text-[9px] sm:text-[10px] font-bold uppercase px-2.5 sm:px-3 py-1 rounded-full tracking-wider">Premium</span>
+            <span className="bg-green-100 text-green-800 text-[9px] sm:text-[10px] font-bold uppercase px-2.5 sm:px-3 py-1 rounded-full tracking-wider">24/7</span>
           </div>
         </div>
 
         {/* Info Cards */}
-        <div className="px-8 py-8 space-y-3">
+        <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 space-y-2.5 sm:space-y-3">
           {info.content.map((item, idx) => (
-            <div key={idx} className="bg-gradient-to-r from-white to-sand-50 rounded-2xl p-5 border border-sand-100 hover:border-sand-300 transition-all duration-300 shadow-sm hover:shadow-md group">
+            <div key={idx} className="bg-gradient-to-r from-white to-sand-50 rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-sand-100 hover:border-sand-300 transition-all duration-300 shadow-sm hover:shadow-md group">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[11px] uppercase tracking-[0.15em] text-sand-600 font-bold">{item.label}</span>
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.15em] text-sand-600 font-bold">{item.label}</span>
                 <div className="w-1.5 h-1.5 bg-sand-400 rounded-full group-hover:bg-sand-600 transition-colors"></div>
               </div>
-              <p className="text-charcoal-900 font-semibold text-base">{item.value}</p>
+              <p className="text-charcoal-900 font-semibold text-sm sm:text-base">{item.value}</p>
             </div>
           ))}
         </div>
 
         {/* Footer CTA */}
-        <div className="px-8 pb-12 pt-4">
+        <div className="px-4 sm:px-6 md:px-8 pb-10 sm:pb-12 pt-3 sm:pt-4">
           <button 
             onClick={onBack}
-            className="w-full py-3.5 bg-gradient-to-r from-sand-800 to-sand-900 text-white text-[11px] font-bold uppercase tracking-[0.15em] rounded-xl hover:from-sand-700 hover:to-sand-800 transition-all duration-300 shadow-lg shadow-sand-900/10 active:scale-95 hover:shadow-xl"
+            className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-sand-800 to-sand-900 text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.15em] rounded-xl hover:from-sand-700 hover:to-sand-800 transition-all duration-300 shadow-lg shadow-sand-900/10 active:scale-95 hover:shadow-xl min-h-[44px]"
+            aria-label="Voltar ao menu principal"
           >
             Voltar ao Menu
           </button>

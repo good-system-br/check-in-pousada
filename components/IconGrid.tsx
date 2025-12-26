@@ -32,19 +32,20 @@ const IconMap: Record<string, React.ElementType> = {
 
 export const IconGrid: React.FC<IconGridProps> = ({ onNavigate }) => {
   return (
-    <div className="grid grid-cols-3 gap-3 p-6">
+    <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 p-4 sm:p-5 md:p-6">
       {menuItems.map((item) => {
         const IconComponent = IconMap[item.iconName] || Info;
         return (
           <button
             key={item.id}
             onClick={() => onNavigate(item.targetScreen)}
-            className="group flex flex-col items-center justify-center aspect-square bg-gradient-to-br from-white via-sand-25 to-sand-50 rounded-2xl shadow-md border border-sand-100 hover:border-sand-400 hover:shadow-xl hover:scale-105 transition-all duration-300 active:scale-95"
+            className="group flex flex-col items-center justify-center aspect-square bg-gradient-to-br from-white via-sand-25 to-sand-50 rounded-xl sm:rounded-2xl shadow-md border border-sand-100 hover:border-sand-400 hover:shadow-xl hover:scale-105 transition-all duration-300 active:scale-95 min-h-[90px] sm:min-h-[100px] md:min-h-[110px]"
+            aria-label={item.label}
           >
-            <div className="text-sand-600 mb-2.5 p-3 rounded-xl bg-gradient-to-br from-sand-100 to-sand-50 group-hover:from-sand-200 group-hover:to-sand-100 group-hover:text-sand-800 transition-all duration-300 shadow-sm">
-                <IconComponent size={22} strokeWidth={1.5} />
+            <div className="text-sand-600 mb-2 sm:mb-2.5 p-2.5 sm:p-3 rounded-xl bg-gradient-to-br from-sand-100 to-sand-50 group-hover:from-sand-200 group-hover:to-sand-100 group-hover:text-sand-800 transition-all duration-300 shadow-sm">
+                <IconComponent size={20} strokeWidth={1.5} className="sm:w-[22px] sm:h-[22px] md:w-6 md:h-6" />
             </div>
-            <span className="text-[9px] font-sans text-charcoal-800 font-semibold tracking-wide text-center px-1 leading-tight uppercase opacity-85 group-hover:opacity-100">
+            <span className="text-[8px] sm:text-[9px] md:text-[10px] font-sans text-charcoal-800 font-semibold tracking-wide text-center px-1 leading-tight uppercase opacity-85 group-hover:opacity-100">
               {item.label}
             </span>
           </button>
