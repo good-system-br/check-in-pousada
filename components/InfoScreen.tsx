@@ -6,7 +6,21 @@ interface InfoScreenProps {
   type: 'BREAKFAST' | 'MENU' | 'MINIBAR' | 'TOURS' | 'GUIDE' | 'RULES' | 'SPA' | 'TOWELS';
 }
 
-const InfoData = {
+interface MinibarItem {
+  category: string;
+  name: string;
+  price: string;
+}
+
+interface InfoType {
+  title: string;
+  icon: React.ElementType;
+  content: Array<{ label: string; value: string }>;
+  description: string;
+  items?: MinibarItem[];
+}
+
+const InfoData: Record<string, InfoType> = {
   BREAKFAST: {
     title: 'Café da Manhã',
     icon: Coffee,
@@ -33,9 +47,35 @@ const InfoData = {
     content: [
       { label: 'Funcionamento', value: '24 horas' },
       { label: 'Cobranças', value: 'Automaticamente na saída' },
-      { label: 'Seleção', value: 'Bebidas Premium & Lanches' },
+      { label: 'Contato', value: 'Recepção: Ramal 100' },
     ],
-    description: 'Minibar climatizado com bebidas nacionais e importadas, água, sucos e lanches gourmet disponíveis 24h.'
+    description: 'Minibar climatizado com bebidas nacionais e importadas, água, sucos e lanches gourmet disponíveis 24h.',
+    items: [
+      // Bebidas Não Alcoólicas
+      { category: 'Águas & Refrigerantes', name: 'Água Mineral 500ml', price: 'R$ 5,00' },
+      { category: 'Águas & Refrigerantes', name: 'Água com Gás 500ml', price: 'R$ 6,00' },
+      { category: 'Águas & Refrigerantes', name: 'Refrigerante Lata 350ml', price: 'R$ 8,00' },
+      { category: 'Águas & Refrigerantes', name: 'Suco Natural 300ml', price: 'R$ 12,00' },
+      { category: 'Águas & Refrigerantes', name: 'Energético 250ml', price: 'R$ 15,00' },
+      
+      // Cervejas
+      { category: 'Cervejas', name: 'Cerveja Nacional Lata 350ml', price: 'R$ 10,00' },
+      { category: 'Cervejas', name: 'Cerveja Premium Long Neck', price: 'R$ 15,00' },
+      { category: 'Cervejas', name: 'Cerveja Artesanal 355ml', price: 'R$ 20,00' },
+      
+      // Vinhos & Destilados
+      { category: 'Vinhos & Destilados', name: 'Vinho Tinto Chileno 375ml', price: 'R$ 45,00' },
+      { category: 'Vinhos & Destilados', name: 'Espumante Brut 187ml', price: 'R$ 35,00' },
+      { category: 'Vinhos & Destilados', name: 'Vodka Smirnoff 50ml', price: 'R$ 18,00' },
+      { category: 'Vinhos & Destilados', name: 'Whisky Red Label 50ml', price: 'R$ 25,00' },
+      
+      // Snacks
+      { category: 'Lanches & Snacks', name: 'Chocolate ao Leite 100g', price: 'R$ 12,00' },
+      { category: 'Lanches & Snacks', name: 'Chocolate Premium 80g', price: 'R$ 18,00' },
+      { category: 'Lanches & Snacks', name: 'Mix de Castanhas 50g', price: 'R$ 15,00' },
+      { category: 'Lanches & Snacks', name: 'Biscoitos Finos 100g', price: 'R$ 10,00' },
+      { category: 'Lanches & Snacks', name: 'Batata Chips Premium 100g', price: 'R$ 12,00' },
+    ]
   },
   TOURS: {
     title: 'Passeios & Experiências',
@@ -133,6 +173,46 @@ export const InfoScreen: React.FC<InfoScreenProps> = ({ onBack, type }) => {
             </div>
           ))}
         </div>
+
+        {/* Minibar Items List */}
+        {type === 'MINIBAR' && info.items && (
+          <div className="px-4 sm:px-6 md:px-8 pb-6 sm:pb-8 space-y-6">
+            <div className="border-t border-sand-200 pt-6">
+              <h3 className="text-lg sm:text-xl font-bold text-charcoal-900 mb-4">Itens Disponíveis</h3>
+              
+              {/* Group items by category */}
+              {Array.from(new Set(info.items.map(item => item.category))).map((category, catIdx) => (
+                <div key={catIdx} className="mb-6">
+                  <h4 className="text-sm font-bold text-sand-700 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <span className="w-8 h-px bg-sand-300"></span>
+                    {category}
+                  </h4>
+                  <div className="space-y-2">
+                    {info.items
+                      .filter(item => item.category === category)
+                      .map((item, itemIdx) => (
+                        <div 
+                          key={itemIdx} 
+                          className="flex items-center justify-between bg-white rounded-lg p-3 sm:p-4 border border-sand-100 hover:border-sand-300 transition-all group"
+                        >
+                          <span className="text-sm text-charcoal-800 flex-1">{item.name}</span>
+                          <span className="text-sm font-bold text-sand-800 ml-3">{item.price}</span>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              ))}
+
+              {/* Note */}
+              <div className="mt-6 bg-sand-50 border-l-4 border-sand-400 p-4 rounded-r-lg">
+                <p className="text-xs text-sand-700 leading-relaxed">
+                  <strong>Importante:</strong> Os valores serão automaticamente debitados da sua conta no check-out. 
+                  Em caso de dúvidas, entre em contato com a recepção.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Footer CTA */}
         <div className="px-4 sm:px-6 md:px-8 pb-10 sm:pb-12 pt-3 sm:pt-4">

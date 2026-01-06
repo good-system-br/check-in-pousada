@@ -76,6 +76,5 @@ export const MENU_ITEMS = [
   { id: '8', label: 'Gastronomia', iconName: 'Utensils', targetScreen: 'RESTAURANTS' as const },
   { id: '9', label: 'Spa & Lazer', iconName: 'Trees', targetScreen: 'SPA' as const },
   { id: '10', label: 'Toalhas & Lareira', iconName: 'LifeBuoy', targetScreen: 'TOWELS' as const },
-  { id: '11', label: 'Recepção', iconName: 'MessageSquareText', targetScreen: 'CHAT' as const },
-  { id: '12', label: 'Nossas Regras', iconName: 'BookOpen', targetScreen: 'RULES' as const },
+  { id: '11', label: 'Nossas Regras', iconName: 'BookOpen', targetScreen: 'RULES' as const },
 ];
