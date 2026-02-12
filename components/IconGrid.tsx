@@ -74,8 +74,8 @@ export const IconGrid: React.FC<IconGridProps> = ({ onNavigate }) => {
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.9522488624147!2d-43.19521!3d-22.98765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bd9b5c3b5b5b5b5%3A0x0!2sPousada!5e0!3m2!1spt-BR!2sbr!4v1234567890"
-            title="Localização da Pousada Villa Verde no Google Maps"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.6842564821635!2d-46.04366342345434!3d-22.862283089999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc10111c695e25%3A0xdd32e4eb2fdb5dd0!2sAv.%20Sol%20Nascente%2C%20150%20-%20Monte%20Verde%2C%20Camanducaia%20-%20MG%2037653-000!5e0!3m2!1spt-BR!2sbr!4v1673894567890"
+            title="Localização da Pousada Villa Monte Verde no Google Maps"
           />
         </div>
       </div>

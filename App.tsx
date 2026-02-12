@@ -6,10 +6,13 @@ import { DirectionsScreen } from './components/DirectionsScreen';
 import { ChatScreen } from './components/ChatScreen';
 import { InfoScreen } from './components/InfoScreen';
 import { GuestScreen } from './components/GuestScreen';
+import { AdminScreen } from './components/AdminScreen';
+import { AppWrapper } from './components/AppWrapper';
+import { TenantSwitcher } from './components/TenantSwitcher';
 import { ScreenName } from './types';
 import { Wifi, Copy, Info, LogOut, Cloud, Droplets, Wind } from 'lucide-react';
 import { getWeatherForMonteVerde, WeatherData } from './services/weatherService';
-import { POUSADA_CONFIG } from './config';
+import { useTenant } from './contexts/TenantContext';
 import { ARIA_LABELS } from './constants';
 
 /**
@@ -32,11 +35,28 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
  * Componente principal da aplicação
  * Gerencia navegação entre telas e estado global
  */
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  const { tenant } = useTenant();
   const [currentScreen, setCurrentScreen] = useState<ScreenName>('WELCOME');
   const [time, setTime] = useState(new Date());
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loadingWeather, setLoadingWeather] = useState(true);
+  const [adminClicks, setAdminClicks] = useState(0);
+  
+  // Garantir que tenant está disponível
+  if (!tenant) {
+    return null;
+  }
+
+  // Admin access - 5 cliques rápidos no nome da pousada
+  useEffect(() => {
+    if (adminClicks >= 5) {
+      setCurrentScreen('ADMIN');
+      setAdminClicks(0);
+    }
+    const timer = setTimeout(() => setAdminClicks(0), 2000);
+    return () => clearTimeout(timer);
+  }, [adminClicks]);
 
   // Atualiza hora a cada segundo
   useEffect(() => {
@@ -80,18 +100,16 @@ const App: React.FC = () => {
         return <InfoScreen onBack={() => setCurrentScreen('MENU')} type="MENU" />;
       case 'MINIBAR':
         return <InfoScreen onBack={() => setCurrentScreen('MENU')} type="MINIBAR" />;
-      case 'TOURS':
-        return <InfoScreen onBack={() => setCurrentScreen('MENU')} type="TOURS" />;
       case 'GUIDE':
         return <InfoScreen onBack={() => setCurrentScreen('MENU')} type="GUIDE" />;
-      case 'RULES':
-        return <InfoScreen onBack={() => setCurrentScreen('MENU')} type="RULES" />;
       case 'SPA':
         return <InfoScreen onBack={() => setCurrentScreen('MENU')} type="SPA" />;
-      case 'TOWELS':
-        return <InfoScreen onBack={() => setCurrentScreen('MENU')} type="TOWELS" />;
+      case 'LOCATION':
+        return <InfoScreen onBack={() => setCurrentScreen('MENU')} type="LOCATION" />;
       case 'GUEST':
         return <GuestScreen onBack={() => setCurrentScreen('MENU')} />;
+      case 'ADMIN':
+        return <AdminScreen onBack={() => setCurrentScreen('MENU')} />;
       case 'WIFI':
          return (
              <div className="h-full flex flex-col items-center justify-center bg-sand-900 text-white p-4 sm:p-6 md:p-8 relative">
@@ -113,23 +131,23 @@ const App: React.FC = () => {
                                 <Info size={14} className="text-sand-400 flex-shrink-0" aria-hidden="true" />
                                 <p className="text-[10px] text-sand-400 uppercase tracking-[0.2em]">Rede</p>
                             </div>
-                            <p className="font-medium text-lg sm:text-xl tracking-wide text-white ml-6 break-all">{POUSADA_CONFIG.wifi.networkName}</p>
+                            <p className="font-medium text-lg sm:text-xl tracking-wide text-white ml-6 break-all">{tenant.wifi.networkName}</p>
                         </div>
 
                         <div className="bg-white/5 backdrop-blur-lg p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-white/10 flex items-center justify-between gap-3 group cursor-pointer hover:bg-white/10 transition-colors active:scale-[0.98]"
                              onClick={() => {
-                                 navigator.clipboard.writeText(POUSADA_CONFIG.wifi.password);
+                                 navigator.clipboard.writeText(tenant.wifi.password);
                              }}
                              role="button"
                              tabIndex={0}
-                             onKeyDown={(e) => e.key === 'Enter' && navigator.clipboard.writeText(POUSADA_CONFIG.wifi.password)}
+                             onKeyDown={(e) => e.key === 'Enter' && navigator.clipboard.writeText(tenant.wifi.password)}
                              aria-label={ARIA_LABELS.copyPassword}>
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-3 mb-2">
                                     <Info size={14} className="text-sand-400 flex-shrink-0" aria-hidden="true" />
                                     <p className="text-[10px] text-sand-400 uppercase tracking-[0.2em]">Senha</p>
                                 </div>
-                                <p className="font-mono text-base sm:text-xl text-sand-200 ml-6 tracking-wide break-all">{POUSADA_CONFIG.wifi.password}</p>
+                                <p className="font-mono text-base sm:text-xl text-sand-200 ml-6 tracking-wide break-all">{tenant.wifi.password}</p>
                             </div>
                             <div className="bg-white/10 p-3 rounded-xl border border-white/5 flex-shrink-0">
                                 <Copy size={18} className="text-sand-200 group-hover:text-white transition-colors sm:w-5 sm:h-5" aria-hidden="true" />
@@ -149,10 +167,14 @@ const App: React.FC = () => {
              <div className="pt-12 sm:pt-16 pb-4 sm:pb-6 px-4 sm:px-6 md:px-8 bg-gradient-to-b from-sand-50 to-sand-25 z-10 flex flex-wrap sm:flex-nowrap justify-between items-start gap-3 sm:gap-4 border-b-2 border-sand-200">
                 <div className="flex-1 min-w-[200px]">
                     <p className="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] sm:tracking-[0.3em] text-sand-600 mb-2 font-bold flex items-center gap-1 flex-wrap">
-                      📍 <span className="hidden xs:inline">{POUSADA_CONFIG.location} •</span> <span className="xs:hidden">MG •</span> Quarto {POUSADA_CONFIG.exampleGuest.room}
+                      📍 <span className="hidden xs:inline">{tenant.location} •</span> <span className="xs:hidden">MG •</span> {tenant.exampleGuest?.room ? `Quarto ${tenant.exampleGuest.room}` : 'Sem quarto definido'}
                     </p>
-                    <h1 className="font-serif text-xl sm:text-2xl text-charcoal-900 leading-tight font-bold tracking-tight">
-                      Bem-vindo à {POUSADA_CONFIG.name}
+                    <h1 
+                      className="font-serif text-xl sm:text-2xl text-charcoal-900 leading-tight font-bold tracking-tight cursor-pointer select-none"
+                      onClick={() => setAdminClicks(prev => prev + 1)}
+                      title="Clique 5x rápido para admin"
+                    >
+                      Bem-vindo à {tenant.name}
                     </h1>
                     <p className="text-xs text-sand-500 mt-1 sm:mt-2 font-light italic">Guia do Hóspede</p>
                 </div>
@@ -202,13 +224,13 @@ const App: React.FC = () => {
                         <div className="absolute bottom-0 left-0 w-32 h-32 sm:w-40 sm:h-40 bg-sand-500 rounded-full blur-[60px] sm:blur-[80px] opacity-10 pointer-events-none" aria-hidden="true"></div>
                         
                         <div className="relative z-10">
-                          <p className="text-sand-300 text-xs sm:text-sm mb-2 sm:mb-3">⭐⭐⭐⭐⭐ {POUSADA_CONFIG.rating} de 5 estrelas</p>
+                          <p className="text-sand-300 text-xs sm:text-sm mb-2 sm:mb-3">⭐⭐⭐⭐⭐ {tenant.rating} de 5 estrelas</p>
                           <p className="font-serif italic text-sand-50 text-base sm:text-lg mb-3 sm:mb-4 leading-relaxed tracking-wide px-2">
-                            "{POUSADA_CONFIG.testimonial}"
+                            "{tenant.testimonial}"
                           </p>
                           <div className="w-12 sm:w-16 h-px bg-gradient-to-r from-transparent via-sand-500/50 to-transparent mx-auto my-3 sm:my-4" aria-hidden="true"></div>
                           <p className="text-sand-400 text-[10px] sm:text-xs font-light">
-                            {POUSADA_CONFIG.name} • {POUSADA_CONFIG.location}
+                            {tenant.name} • {tenant.location}
                           </p>
                         </div>
                     </div>
@@ -218,7 +240,7 @@ const App: React.FC = () => {
              {/* WhatsApp Button */}
              <div className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 z-50">
                <a 
-                 href={`https://wa.me/${POUSADA_CONFIG.whatsapp}`}
+                 href={`https://wa.me/${tenant.whatsapp}`}
                  target="_blank"
                  rel="noopener noreferrer"
                  className="w-14 h-14 sm:w-16 sm:h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-xl shadow-green-900/20 hover:scale-105 transition-all duration-300 active:scale-95 group border-2 border-white hover:bg-[#20BA58]"
@@ -233,7 +255,9 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-sand-200 flex justify-center items-center font-sans p-0 sm:p-4">
+    <>
+      <TenantSwitcher />
+      <div className="w-full min-h-screen bg-sand-200 flex justify-center items-center font-sans p-0 sm:p-4">
         {/* Mobile Frame - Responsive */}
         <div className="w-full h-screen sm:max-w-[min(420px,90vw)] sm:h-[min(844px,90vh)] bg-black sm:rounded-[3.5rem] shadow-2xl overflow-hidden relative sm:border-[10px] border-black sm:ring-1 sm:ring-white/10">
             
@@ -253,7 +277,16 @@ const App: React.FC = () => {
                  </div>
             </div>
         </div>
-    </div>
+      </div>
+    </>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <AppWrapper>
+      <AppContent />
+    </AppWrapper>
   );
 };
 

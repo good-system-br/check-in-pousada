@@ -3,9 +3,22 @@
  * Altere os valores aqui para personalizar a experiência
  */
 
+export type GuestProfile = {
+  name: string;
+  room: string;
+  roomType: string;
+  floor: string;
+  checkIn: string;
+  checkOut: string;
+  nights: string;
+  phone: string;
+  email: string;
+  reviews: number;
+};
+
 export const POUSADA_CONFIG = {
   // Informações básicas
-  name: 'Villa Verde',
+  name: 'Villa Monte Verde',
   location: 'Monte Verde, MG',
   region: 'Camanducaia, Minas Gerais',
   
@@ -20,16 +33,7 @@ export const POUSADA_CONFIG = {
   whatsapp: '5548999999999',
   
   // Dados do hóspede de exemplo
-  exampleGuest: {
-    name: 'Vitor Silva',
-    room: '107',
-    roomType: 'Suíte Premium',
-    floor: 'Andar 1',
-    checkIn: '08 Dez 2024',
-    checkOut: '10 Dez 2024',
-    nights: '2 noites',
-    email: 'vitor@email.com',
-  },
+  exampleGuest: null as GuestProfile | null,
   
   // Wi-Fi
   wifi: {
@@ -69,12 +73,9 @@ export const MENU_ITEMS = [
   { id: '1', label: 'Wi-Fi', iconName: 'Wifi', targetScreen: 'WIFI' as const },
   { id: '2', label: 'Como Chegar', iconName: 'MapPin', targetScreen: 'DIRECTIONS' as const },
   { id: '3', label: 'Café da Manhã', iconName: 'Coffee', targetScreen: 'BREAKFAST' as const },
-  { id: '4', label: 'Cardápio', iconName: 'Utensils', targetScreen: 'MENU_FOOD' as const },
-  { id: '5', label: 'Minibar', iconName: 'ShoppingBag', targetScreen: 'MINIBAR' as const },
-  { id: '6', label: 'Passeios', iconName: 'Compass', targetScreen: 'TOURS' as const },
-  { id: '7', label: 'Guia da Pousada', iconName: 'Info', targetScreen: 'GUIDE' as const },
-  { id: '8', label: 'Gastronomia', iconName: 'Utensils', targetScreen: 'RESTAURANTS' as const },
-  { id: '9', label: 'Spa & Lazer', iconName: 'Trees', targetScreen: 'SPA' as const },
-  { id: '10', label: 'Toalhas & Lareira', iconName: 'LifeBuoy', targetScreen: 'TOWELS' as const },
-  { id: '11', label: 'Nossas Regras', iconName: 'BookOpen', targetScreen: 'RULES' as const },
+  { id: '4', label: 'Restaurante', iconName: 'Utensils', targetScreen: 'MENU_FOOD' as const },
+  { id: '5', label: 'Frigobar', iconName: 'ShoppingBag', targetScreen: 'MINIBAR' as const },
+  { id: '6', label: 'Informações', iconName: 'Info', targetScreen: 'GUIDE' as const },
+  { id: '7', label: 'Serviços Especiais', iconName: 'Trees', targetScreen: 'SPA' as const },
+  { id: '8', label: 'Localização', iconName: 'MapPin', targetScreen: 'LOCATION' as const },
 ];

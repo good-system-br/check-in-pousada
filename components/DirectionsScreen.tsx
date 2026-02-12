@@ -31,20 +31,35 @@ export const DirectionsScreen: React.FC<DirectionsScreenProps> = ({ onBack }) =>
            <div className="absolute inset-0 bg-gradient-to-t from-sand-50/90 to-transparent"></div>
            
            {/* Floating CTA */}
-           <div className="absolute -bottom-7 sm:-bottom-8 left-4 right-4 sm:left-6 sm:right-6">
+           <div className="absolute -bottom-6 sm:-bottom-7 left-4 right-4 sm:left-6 sm:right-6 flex gap-2">
                 <a 
-                    href="https://www.google.com/maps/search/?api=1&query=Monte+Verde+MG" 
+                    href="https://www.google.com/maps/dir//Pousada+Villa+Monte+Verde+Av.+Sol+Nascente,+150+-+WhatsApp+(35)+3438-2399+-+Monte+Verde+Camanducaia+-+MG+37653-000/@-22.862283,-46.043664,14z/data=!4m5!4m4!1m0!1m2!1m1!1s0x94cc10111c695e25:0xdd32e4eb2fdb5dd0" 
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-between bg-sand-800 text-white p-4 sm:p-5 rounded-xl sm:rounded-2xl shadow-xl shadow-sand-900/20 hover:bg-sand-700 transition-all active:scale-[0.98] border border-white/10 min-h-[72px]"
-                    aria-label="Abrir localização no Google Maps ou Waze"
+                    className="flex-1 flex items-center justify-between bg-sand-800 text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg sm:rounded-xl shadow-lg shadow-sand-900/20 hover:bg-sand-700 transition-all active:scale-[0.98] border border-white/10 min-h-[48px] sm:min-h-[52px]"
+                    aria-label="Abrir no Google Maps"
                 >
                     <div className="flex flex-col flex-1 min-w-0">
-                        <span className="text-[9px] sm:text-[10px] uppercase text-sand-300 tracking-[0.15em] sm:tracking-[0.2em] font-bold mb-1 leading-none">GPS Conectado</span>
-                        <span className="font-serif text-lg sm:text-xl text-white truncate">Abrir no Maps/Waze</span>
+                        <span className="text-[7px] sm:text-[8px] uppercase text-sand-300 tracking-[0.1em] sm:tracking-[0.15em] font-bold leading-none">GPS</span>
+                        <span className="font-serif text-sm sm:text-base text-white truncate">Google Maps</span>
                     </div>
-                    <div className="bg-white/10 p-2 sm:p-2.5 rounded-full border border-white/5 flex-shrink-0 ml-3">
-                        <Navigation size={20} className="text-white sm:w-[22px] sm:h-[22px]" fill="currentColor" />
+                    <div className="bg-white/10 p-1.5 sm:p-2 rounded-full border border-white/5 flex-shrink-0 ml-2">
+                        <Navigation size={16} className="text-white sm:w-[18px] sm:h-[18px]" fill="currentColor" />
+                    </div>
+                </a>
+                <a 
+                    href="https://waze.com/ul?place=CiQwNzQyZWEzNTY4NDcyZGNjOGE1YTBmYjEyZjlhYzE5NDQ2YQ%3D%3D&ll=-22.862283,-46.043664&navigate=yes" 
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 flex items-center justify-between bg-sand-600 text-white px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg sm:rounded-xl shadow-lg shadow-sand-900/20 hover:bg-sand-500 transition-all active:scale-[0.98] border border-white/10 min-h-[48px] sm:min-h-[52px]"
+                    aria-label="Abrir no Waze"
+                >
+                    <div className="flex flex-col flex-1 min-w-0">
+                        <span className="text-[7px] sm:text-[8px] uppercase text-sand-200 tracking-[0.1em] sm:tracking-[0.15em] font-bold leading-none">Nav.</span>
+                        <span className="font-serif text-sm sm:text-base text-white truncate">Waze</span>
+                    </div>
+                    <div className="bg-white/10 p-1.5 sm:p-2 rounded-full border border-white/5 flex-shrink-0 ml-2">
+                        <Navigation size={16} className="text-white sm:w-[18px] sm:h-[18px]" fill="currentColor" />
                     </div>
                 </a>
            </div>
@@ -55,8 +70,8 @@ export const DirectionsScreen: React.FC<DirectionsScreenProps> = ({ onBack }) =>
                 <div className="flex justify-center mb-2.5 sm:mb-3 text-sand-600">
                     <Mountain size={26} strokeWidth={1} className="sm:w-7 sm:h-7" />
                 </div>
-                <p className="font-serif text-xl sm:text-2xl text-charcoal-900 mb-2">Av. Monte Verde, 1200</p>
-                <p className="text-[10px] sm:text-xs text-sand-500 uppercase tracking-[0.15em] sm:tracking-[0.2em] font-medium">Camanducaia • Minas Gerais</p>
+                <p className="font-serif text-xl sm:text-2xl text-charcoal-900 mb-2">Av. Sol Nascente, 150</p>
+                <p className="text-[10px] sm:text-xs text-sand-500 uppercase tracking-[0.15em] sm:tracking-[0.2em] font-medium">Monte Verde • Camanducaia • Minas Gerais</p>
             </div>
 
             {/* Timeline Steps */}

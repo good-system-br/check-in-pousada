@@ -1,9 +1,9 @@
 import React from 'react';
-import { ArrowLeft, MapPin, Clock, Users, Info, Zap, Coffee, Wind } from 'lucide-react';
+import { ArrowLeft, MapPin, Clock, Users, Info, Zap, Coffee, Wind, Utensils } from 'lucide-react';
 
 interface InfoScreenProps {
   onBack: () => void;
-  type: 'BREAKFAST' | 'MENU' | 'MINIBAR' | 'TOURS' | 'GUIDE' | 'RULES' | 'SPA' | 'TOWELS';
+  type: 'BREAKFAST' | 'MENU_FOOD' | 'MINIBAR' | 'GUIDE' | 'SPA' | 'LOCATION';
 }
 
 interface MinibarItem {
@@ -25,107 +25,72 @@ const InfoData: Record<string, InfoType> = {
     title: 'Café da Manhã',
     icon: Coffee,
     content: [
-      { label: 'Horário', value: '07:00 - 11:00' },
-      { label: 'Local', value: 'Sala de Estar Térreo' },
-      { label: 'Tipo', value: 'Buffet Continental Premium' },
+      { label: 'Horário', value: '08:30 - 10:30' },
+      { label: 'Local', value: 'Salão de Café' },
+      { label: 'Incluído', value: 'Sim' },
     ],
-    description: 'Defrute de um café da manhã completo com pães franceses, frutas frescas, sucos naturais, café premium e ovos à disposição.'
+    description: 'Nosso café da manhã é servido em nosso salão de café das 08:30 às 10:30.'
   },
   MENU: {
-    title: 'Cardápio',
-    icon: MapPin,
+    title: 'Restaurante',
+    icon: Utensils,
     content: [
-      { label: 'Disponibilidade', value: 'À la carte' },
-      { label: 'Horário', value: '12:00 - 22:00' },
-      { label: 'Especialidades', value: 'Fondue, Trutas, Risoto' },
+      { label: 'Cardápio', value: 'Variado' },
+      { label: 'Música Ao Vivo', value: 'Finais de semana' },
+      { label: 'Desconto', value: '20% para hóspedes' },
+      { label: 'Vista', value: 'Privilegiada' },
     ],
-    description: 'Cardápio assinado com pratos típicos da região, preparados com ingredientes frescos e técnica francesa refinada.'
+    description: 'Há um restaurante em nossa pousada, com vista privilegiada, cardápio variado e música ao vivo (voz e violão) aos finais de semana. Concedemos 20% de desconto aos nossos hóspedes.'
   },
   MINIBAR: {
-    title: 'Minibar',
+    title: 'Frigobar',
     icon: Zap,
     content: [
       { label: 'Funcionamento', value: '24 horas' },
-      { label: 'Cobranças', value: 'Automaticamente na saída' },
-      { label: 'Contato', value: 'Recepção: Ramal 100' },
+      { label: 'Cobranças', value: 'Na saída (check-out)' },
+      { label: 'Método', value: 'Lançado na conta' },
     ],
-    description: 'Minibar climatizado com bebidas nacionais e importadas, água, sucos e lanches gourmet disponíveis 24h.',
+    description: 'Frigobar disponível em sua acomodação com itens selecionados. A consumação é lançada na conta e cobrada no check-out.',
     items: [
-      // Bebidas Não Alcoólicas
-      { category: 'Águas & Refrigerantes', name: 'Água Mineral 500ml', price: 'R$ 5,00' },
-      { category: 'Águas & Refrigerantes', name: 'Água com Gás 500ml', price: 'R$ 6,00' },
-      { category: 'Águas & Refrigerantes', name: 'Refrigerante Lata 350ml', price: 'R$ 8,00' },
-      { category: 'Águas & Refrigerantes', name: 'Suco Natural 300ml', price: 'R$ 12,00' },
-      { category: 'Águas & Refrigerantes', name: 'Energético 250ml', price: 'R$ 15,00' },
-      
-      // Cervejas
-      { category: 'Cervejas', name: 'Cerveja Nacional Lata 350ml', price: 'R$ 10,00' },
-      { category: 'Cervejas', name: 'Cerveja Premium Long Neck', price: 'R$ 15,00' },
-      { category: 'Cervejas', name: 'Cerveja Artesanal 355ml', price: 'R$ 20,00' },
-      
-      // Vinhos & Destilados
-      { category: 'Vinhos & Destilados', name: 'Vinho Tinto Chileno 375ml', price: 'R$ 45,00' },
-      { category: 'Vinhos & Destilados', name: 'Espumante Brut 187ml', price: 'R$ 35,00' },
-      { category: 'Vinhos & Destilados', name: 'Vodka Smirnoff 50ml', price: 'R$ 18,00' },
-      { category: 'Vinhos & Destilados', name: 'Whisky Red Label 50ml', price: 'R$ 25,00' },
-      
-      // Snacks
-      { category: 'Lanches & Snacks', name: 'Chocolate ao Leite 100g', price: 'R$ 12,00' },
-      { category: 'Lanches & Snacks', name: 'Chocolate Premium 80g', price: 'R$ 18,00' },
-      { category: 'Lanches & Snacks', name: 'Mix de Castanhas 50g', price: 'R$ 15,00' },
-      { category: 'Lanches & Snacks', name: 'Biscoitos Finos 100g', price: 'R$ 10,00' },
-      { category: 'Lanches & Snacks', name: 'Batata Chips Premium 100g', price: 'R$ 12,00' },
+      { category: 'Bebidas', name: 'Água sem gás', price: 'R$ 7,00' },
+      { category: 'Bebidas', name: 'Água com gás', price: 'R$ 9,00' },
+      { category: 'Bebidas', name: 'Refrigerante', price: 'R$ 10,00' },
+      { category: 'Bebidas', name: 'Cerveja', price: 'R$ 16,00' },
+      { category: 'Bebidas', name: 'Cápsula de Café', price: 'R$ 12,00' },
     ]
   },
-  TOURS: {
-    title: 'Passeios & Experiências',
-    icon: MapPin,
-    content: [
-      { label: 'Trilhas', value: 'Trilha da Pedra Grande' },
-      { label: 'Atividades', value: 'Trekking, Fotografia' },
-      { label: 'Duração', value: '2-4 horas' },
-    ],
-    description: 'Explore a natureza de Monte Verde com guias locais experientes. Trilhas para todos os níveis de experiência.'
-  },
   GUIDE: {
-    title: 'Guia da Pousada',
+    title: 'Informações Importantes',
     icon: Info,
     content: [
-      { label: 'Check-in', value: '15:00' },
-      { label: 'Check-out', value: '11:00' },
-      { label: 'Recepção', value: '24 horas disponível' },
+      { label: 'Recepção', value: '08:00 - 22:00' },
+      { label: 'Emergência', value: '(35) 98893-1913' },
+      { label: 'Wi-Fi', value: 'Gratuito - chalesmv' },
+      { label: 'Arrumação', value: 'Solicitar até 14:00' },
     ],
-    description: 'Bem-vindo à Pousada Villa Verde. Aqui você encontrará todas as informações sobre a pousada e Monte Verde.'
-  },
-  RULES: {
-    title: 'Nossas Regras',
-    icon: Info,
-    content: [
-      { label: 'Barulhos', value: 'Respeito após 22:00' },
-      { label: 'Fumar', value: 'Proibido em áreas comuns' },
-      { label: 'Animais', value: 'Sob consulta prévia' },
-    ],
-    description: 'Solicitamos respeito com nossa equipe, hóspedes e comunidade local para manter o ambiente tranquilo e acolhedor.'
+    description: '🚨 INFORMAÇÕES IMPORTANTES: Manter a ducha higiênica sempre desligada, pois pode influenciar no aquecimento do chuveiro e da hidromassagem.'
   },
   SPA: {
-    title: 'Spa & Lazer',
+    title: 'Serviços Especiais',
     icon: Wind,
     content: [
-      { label: 'Serviços', value: 'Massagens & Terapias' },
-      { label: 'Horário', value: '09:00 - 20:00' },
-      { label: 'Reserva', value: 'Recepção' },
+      { label: 'Massagem', value: 'Disponível' },
+      { label: 'Consulta', value: 'Contate a recepção' },
+      { label: 'Valores', value: 'Sob consulta' },
     ],
-    description: 'Relaxe em nosso spa com tratamentos rejuvenescedores. Sauna, jacuzzi e sala de meditação disponíveis.'
+    description: 'Possuímos serviço de massagem. Para consultar valores e disponibilidade, contate a recepção.'
   },
-  TOWELS: {
-    title: 'Toalhas & Lareira',
-    icon: Zap,
+  LOCATION: {
+    title: 'Localização',
+    icon: MapPin,
     content: [
-      { label: 'Toalhas', value: 'Troque quantas desejar' },
-      { label: 'Lareira', value: 'Acione conforme necessário' },
-      { label: 'Lenha', value: 'Reabastecemos diariamente' },
+      { label: 'Endereço', value: 'Av. Sol Nascente, 150' },
+      { label: 'Cidade', value: 'Monte Verde - Camanducaia' },
+      { label: 'Estado', value: 'Minas Gerais' },
+      { label: 'CEP', value: '37653-000' },
+      { label: 'Telefone', value: '(35) 3438-2399' },
     ],
-    description: 'Toalhas premium disponíveis a qualquer hora. A lareira oferece aconchego nos dias frios. Solicite à recepção.'
+    description: 'Encontre a pousada no mapa. Localizada em plena Serra da Mantiqueira, cercada pela natureza.'
   },
 };
 
@@ -163,16 +128,82 @@ export const InfoScreen: React.FC<InfoScreenProps> = ({ onBack, type }) => {
 
         {/* Info Cards */}
         <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8 space-y-2.5 sm:space-y-3">
+          <style>{`
+            @keyframes pulse-glow {
+              0%, 100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.7), 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+              50% { box-shadow: 0 0 0 8px rgba(217, 119, 6, 0), 0 10px 25px -5px rgba(0, 0, 0, 0.2); }
+            }
+            @keyframes bounce-subtle {
+              0%, 100% { transform: translateY(0); }
+              50% { transform: translateY(-4px); }
+            }
+            .animate-pulse-glow {
+              animation: pulse-glow 2s infinite;
+            }
+            .animate-bounce-subtle {
+              animation: bounce-subtle 2s infinite;
+            }
+          `}</style>
           {info.content.map((item, idx) => (
-            <div key={idx} className="bg-gradient-to-r from-white to-sand-50 rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-sand-100 hover:border-sand-300 transition-all duration-300 shadow-sm hover:shadow-md group">
+            <div 
+              key={idx} 
+              className={`bg-gradient-to-r from-white to-sand-50 rounded-xl sm:rounded-2xl p-4 sm:p-5 border transition-all duration-300 shadow-sm hover:shadow-md group ${
+                type === 'GUIDE' && item.label === 'Arrumação' 
+                  ? 'border-orange-400 bg-gradient-to-r from-orange-50 to-sand-50 animate-pulse-glow' 
+                  : 'border-sand-100 hover:border-sand-300'
+              }`}
+            >
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.15em] text-sand-600 font-bold">{item.label}</span>
-                <div className="w-1.5 h-1.5 bg-sand-400 rounded-full group-hover:bg-sand-600 transition-colors"></div>
+                <div className="flex items-center gap-2 flex-1">
+                  <span className={`text-[10px] sm:text-[11px] uppercase tracking-[0.12em] sm:tracking-[0.15em] font-bold ${
+                    type === 'GUIDE' && item.label === 'Arrumação' 
+                      ? 'text-orange-600' 
+                      : 'text-sand-600'
+                  }`}>
+                    {item.label}
+                  </span>
+                  {type === 'GUIDE' && item.label === 'Arrumação' && (
+                    <span className="animate-bounce-subtle">
+                      <svg className="w-4 h-4 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    </span>
+                  )}
+                </div>
+                <div className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                  type === 'GUIDE' && item.label === 'Arrumação' 
+                    ? 'bg-orange-600 group-hover:bg-orange-700' 
+                    : 'bg-sand-400 group-hover:bg-sand-600'
+                }`}></div>
               </div>
-              <p className="text-charcoal-900 font-semibold text-sm sm:text-base">{item.value}</p>
+              <p className={`font-semibold text-sm sm:text-base ${
+                type === 'GUIDE' && item.label === 'Arrumação' 
+                  ? 'text-orange-700' 
+                  : 'text-charcoal-900'
+              }`}>
+                {item.value}
+              </p>
             </div>
           ))}
         </div>
+
+        {/* Map for Location */}
+        {type === 'LOCATION' && (
+          <div className="px-4 sm:px-6 md:px-8 py-6 sm:py-8">
+            <div className="rounded-xl sm:rounded-2xl overflow-hidden shadow-lg border border-sand-200">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.6842564821635!2d-46.04366342345434!3d-22.862283089999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc10111c695e25%3A0xdd32e4eb2fdb5dd0!2sAv.%20Sol%20Nascente%2C%20150%20-%20Monte%20Verde%2C%20Camanducaia%20-%20MG%2037653-000!5e0!3m2!1spt-BR!2sbr!4v1673894567890"
+                width="100%"
+                height="350"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full"
+              />
+            </div>
+          </div>
+        )}
 
         {/* Minibar Items List */}
         {type === 'MINIBAR' && info.items && (

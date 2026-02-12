@@ -7,10 +7,14 @@ interface WelcomeScreenProps {
 }
 
 const images = [
-  "https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=1000&auto=format&fit=crop", // Misty Forest/Mountains (Araucaria vibe)
-  "https://images.unsplash.com/photo-1542718610-a1d656d1884c?q=80&w=1000&auto=format&fit=crop", // Cozy Fireplace
-  "https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee?q=80&w=1000&auto=format&fit=crop", // Interior Cabin
-  "https://images.unsplash.com/photo-1585543805890-6051f7829f98?q=80&w=1000&auto=format&fit=crop"  // Winter Coffee/Breakfast
+  "/assets/WhatsApp Image 2026-01-07 at 23.26.09 (1).jpeg",
+  "/assets/WhatsApp Image 2026-01-07 at 23.26.09.jpeg",
+  "/assets/WhatsApp Image 2026-01-07 at 23.26.10 (1).jpeg",
+  "/assets/WhatsApp Image 2026-01-07 at 23.26.10 (2).jpeg",
+  "/assets/WhatsApp Image 2026-01-07 at 23.26.10 (3).jpeg",
+  "/assets/WhatsApp Image 2026-01-07 at 23.26.10.jpeg",
+  "/assets/WhatsApp Image 2026-01-07 at 23.26.11 (1).jpeg",
+  "/assets/WhatsApp Image 2026-01-07 at 23.26.11.jpeg"
 ];
 
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
@@ -86,40 +90,12 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
             
             <h1 className="font-serif text-4xl sm:text-5xl text-white leading-[0.9] drop-shadow-xl">
                <span className="block text-2xl sm:text-3xl font-light italic opacity-90 mb-1">Bem-vindo à</span>
-               <span className="font-semibold tracking-wide">Villa Verde</span>
+               <span className="font-semibold tracking-wide">Villa Monte Verde</span>
             </h1>
             
             <p className="text-white/80 text-xs sm:text-sm font-light leading-relaxed max-w-[260px] sm:max-w-[280px] border-l-2 border-sand-500 pl-3 sm:pl-4">
                O charme dos Alpes com a hospitalidade de Minas Gerais
             </p>
-        </div>
-
-        {/* Quick Stats - Ultra Compact */}
-        <div className="mb-2.5 sm:mb-3 flex gap-1.5 sm:gap-2 px-1 sm:px-2">
-          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-2 text-center min-h-[52px] flex flex-col justify-center">
-            <p className="text-base sm:text-lg font-bold text-white leading-none">{loading ? '--' : weather?.temperature}°</p>
-            <p className="text-[7px] sm:text-[8px] text-sand-300 mt-1">Temp</p>
-          </div>
-          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-2 text-center min-h-[52px] flex flex-col justify-center">
-            <p className="text-base sm:text-lg font-bold text-white leading-none">1800m</p>
-            <p className="text-[7px] sm:text-[8px] text-sand-300 mt-1">Alt</p>
-          </div>
-          <div className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded p-2 text-center min-h-[52px] flex flex-col justify-center">
-            <p className="text-base sm:text-lg font-bold text-white leading-none">24h</p>
-            <p className="text-[7px] sm:text-[8px] text-sand-300 mt-1">Sup</p>
-          </div>
-        </div>
-
-        {/* Info Cards - Novos */}
-        <div className="mb-2.5 sm:mb-3 grid grid-cols-2 gap-1.5 sm:gap-2 px-1 sm:px-2">
-          <div className="bg-gradient-to-br from-white/15 to-white/5 border border-white/25 backdrop-blur-md rounded-lg p-2.5 sm:p-3">
-            <p className="text-[8px] sm:text-[9px] text-sand-300 uppercase font-semibold mb-1 sm:mb-1.5 leading-none">Experiência Premium</p>
-            <p className="text-white text-[10px] sm:text-xs leading-snug">Café especial, spa e lazer 24h</p>
-          </div>
-          <div className="bg-gradient-to-br from-white/15 to-white/5 border border-white/25 backdrop-blur-md rounded-lg p-2.5 sm:p-3">
-            <p className="text-[8px] sm:text-[9px] text-sand-300 uppercase font-semibold mb-1 sm:mb-1.5 leading-none">Localização</p>
-            <p className="text-white text-[10px] sm:text-xs leading-snug">1.300m de altitude, floresta</p>
-          </div>
         </div>
 
         {/* Action Area */}

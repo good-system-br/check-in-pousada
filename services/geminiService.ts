@@ -93,7 +93,7 @@ export const chatWithConcierge = async (message: string, history: string[]): Pro
 
         const model = "gemini-2.5-flash";
         const systemInstruction = `
-        Você é a recepcionista virtual da 'Pousada Villa Verde' em Monte Verde, MG (a Suíça Mineira).
+        Você é a recepcionista virtual da 'Pousada Villa Monte Verde' em Monte Verde, MG (a Suíça Mineira).
         Seu tom é sofisticado, acolhedor e "srrano" (use emojis de frio, vinho, lareira).
         
         Informações da Pousada e Região:
